@@ -2,13 +2,19 @@ from agents.application.application_agent import ApplicationAgent
 from agents.application.web_agent import WebAgent
 from agents.audio.audio_agent import AudioAgent
 from agents.audio.voice_control_agent import VoiceControlAgent
+from agents.backup_restore.backup_restore_agent import BackupRestoreAgent
 from agents.communication.email_agent import EmailAgent
 from agents.communication.notification_agent import NotificationAgent
+from agents.data_processing.data_processing_agent import DataProcessingAgent
+from agents.database.database_agent import DatabaseAgent
+from agents.email_client.email_client_agent import EmailClientAgent
 from agents.file_management.file_management_agent import FileManagementAgent
 from agents.file_management.document_agent import DocumentAgent
 from agents.file_management.backup_agent import BackupAgent
 from agents.file_management.clipboard_agent import ClipboardAgent
 from agents.file_management.checksum_agent import ChecksumAgent
+from agents.file_transfer.file_transfer_agent import FileTransferAgent
+from agents.log_management.log_management_agent import LogManagementAgent
 from agents.monitoring.system_monitoring_agent import SystemMonitoringAgent
 from agents.monitoring.power_management_agent import PowerManagementAgent
 from agents.monitoring.system_information_agent import SystemInformationAgent
@@ -20,27 +26,20 @@ from agents.networking.network_agent import NetworkAgent
 from agents.networking.browser_automation_agent import BrowserAutomationAgent
 from agents.os_management.operating_system_agent import OperatingSystemAgent
 from agents.os_management.update_agent import UpdateAgent
+from agents.performance_monitoring.performance_monitoring_agent import PerformanceMonitoringAgent
 from agents.scheduler.scheduler_agent import SchedulerAgent
 from agents.scheduler.automation_agent import AutomationAgent
 from agents.ai.ai_model_training_agent import AIModelTrainingAgent
 from agents.ai.natural_language_agent import NaturalLanguageAgent
 from agents.ai.tensor_core_agent import TensorCoreAgent
-from agents.database.database_agent import DatabaseAgent
 from agents.utility.input_agent import InputAgent
 from agents.utility.priority_agent import PriorityAgent
 from agents.utility.math_agent import MathAgent
 from agents.utility.speech_synthesis_agent import SpeechSynthesisAgent
-from agents.ui.ui_agent import UIAgent
-from agents.file_transfer.file_transfer_agent import FileTransferAgent
-from agents.log_management.log_management_agent import LogManagementAgent
-from agents.data_visualization.data_visualization_agent import DataVisualizationAgent
-from agents.personal_assistant.personal_assistant_agent import PersonalAssistantAgent
-from agents.backup_restore.backup_restore_agent import BackupRestoreAgent
-from agents.email_client.email_client_agent import EmailClientAgent
-from agents.data_processing.data_processing_agent import DataProcessingAgent
-from agents.web_scraping.web_scraping_agent import WebScrapingAgent
 from agents.virtual_assistant.virtual_assistant_agent import VirtualAssistantAgent
-from agents.performance_monitoring.performance_monitoring_agent import PerformanceMonitoringAgent
+from agents.web_scraping.web_scraping_agent import WebScrapingAgent
+from agents.ui.ui_agent import UIAgent
+from agents.testing.testing_agent import TestingAgent
 
 class Supervisor:
     def __init__(self):
@@ -75,24 +74,22 @@ class Supervisor:
             "SchedulerAgent": SchedulerAgent,
             "AIModelTrainingAgent": AIModelTrainingAgent,
             "FileManagementAgent": FileManagementAgent,
-            "VirtualizationAgent": AutomationAgent,
             "VoiceControlAgent": VoiceControlAgent,
             "ClipboardAgent": ClipboardAgent,
             "PowerManagementAgent": PowerManagementAgent,
             "SystemInformationAgent": SystemInformationAgent,
             "BrowserAutomationAgent": BrowserAutomationAgent,
             "SpeechSynthesisAgent": SpeechSynthesisAgent,
-            "UIAgent": UIAgent,
+            "BackupRestoreAgent": BackupRestoreAgent,
+            "DataProcessingAgent": DataProcessingAgent,
+            "EmailClientAgent": EmailClientAgent,
             "FileTransferAgent": FileTransferAgent,
             "LogManagementAgent": LogManagementAgent,
-            "DataVisualizationAgent": DataVisualizationAgent,
-            "PersonalAssistantAgent": PersonalAssistantAgent,
-            "BackupRestoreAgent": BackupRestoreAgent,
-            "EmailClientAgent": EmailClientAgent,
-            "DataProcessingAgent": DataProcessingAgent,
-            "WebScrapingAgent": WebScrapingAgent,
-            "VirtualAssistantAgent": VirtualAssistantAgent,
             "PerformanceMonitoringAgent": PerformanceMonitoringAgent,
+            "VirtualAssistantAgent": VirtualAssistantAgent,
+            "WebScrapingAgent": WebScrapingAgent,
+            "UIAgent": UIAgent,
+            "TestingAgent": TestingAgent  # Register the new TestingAgent here
         }
 
         print("Select agents to use (comma separated):")
