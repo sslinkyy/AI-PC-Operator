@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI System with Multiple Agents</title>
+    <meta charset="UTF-8">
+    <title>AI System with Multiple Agents</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        a {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
 <h1>AI System with Multiple Agents</h1>
 
-<p>This project implements a multi-agent system where each agent performs specific tasks, such as managing applications, handling audio processing, performing mathematical calculations, and more. The system includes a supervisor that delegates tasks to the appropriate agents.</p>
+<p>This project implements a multi-agent system where each agent performs specific tasks, such as managing applications, handling audio processing, performing mathematical calculations, and more. The system includes a supervisor that delegates tasks to the appropriate agents and a learning mechanism to improve performance over time using neural networks and reinforcement learning.</p>
 
 <h2>Table of Contents</h2>
-<ul>
+<ol>
     <li><a href="#project-structure">Project Structure</a></li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#examples">Examples</a>
-        <ul>
+        <ol>
             <li><a href="#adding-and-processing-tasks">Adding and Processing Tasks</a></li>
             <li><a href="#audio-processing">Audio Processing</a></li>
             <li><a href="#screen-capture">Screen Capture</a></li>
@@ -25,10 +51,10 @@
             <li><a href="#sending-emails">Sending Emails</a></li>
             <li><a href="#training-and-saving-models">Training and Saving Models</a></li>
             <li><a href="#loading-models">Loading Models</a></li>
-        </ul>
+        </ol>
     </li>
     <li><a href="#available-agents-and-commands">Available Agents and Commands</a>
-        <ul>
+        <ol>
             <li><a href="#application-management-agents">Application Management Agents</a></li>
             <li><a href="#audio-processing-agents">Audio Processing Agents</a></li>
             <li><a href="#communication-agents">Communication Agents</a></li>
@@ -41,12 +67,12 @@
             <li><a href="#ai-and-machine-learning-agents">AI and Machine Learning Agents</a></li>
             <li><a href="#database-agent">Database Agent</a></li>
             <li><a href="#utility-agents">Utility Agents</a></li>
-        </ul>
+        </ol>
     </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#support">Support</a></li>
-</ul>
+</ol>
 
 <h2 id="project-structure">Project Structure</h2>
 <ul>
@@ -133,6 +159,36 @@
                     <li><code>speech_synthesis_agent.py</code>: Converts text to speech.</li>
                 </ul>
             </li>
+            <li><code>backup_restore/</code>: Agents related to backup and restore operations.
+                <ul>
+                    <li><code>backup_restore_agent.py</code>: Manages system backups and restores.</li>
+                </ul>
+            </li>
+            <li><code>email_client/</code>: Agents related to email client operations.
+                <ul>
+                    <li><code>email_client_agent.py</code>: Manages email sending and receiving using various protocols.</li>
+                </ul>
+            </li>
+            <li><code>data_processing/</code>: Agents related to data processing.
+                <ul>
+                    <li><code>data_processing_agent.py</code>: Handles complex data transformations and processing tasks.</li>
+                </ul>
+            </li>
+            <li><code>web_scraping/</code>: Agents related to web scraping.
+                <ul>
+                    <li><code>web_scraping_agent.py</code>: Extracts data from web pages using scraping techniques.</li>
+                </ul>
+            </li>
+            <li><code>virtual_assistant/</code>: Agents related to virtual assistant operations.
+                <ul>
+                    <li><code>virtual_assistant_agent.py</code>: Provides general assistance and manages tasks, reminders, and appointments.</li>
+                </ul>
+            </li>
+            <li><code>performance_monitoring/</code>: Agents related to performance monitoring.
+                <ul>
+                    <li><code>performance_monitoring_agent.py</code>: Continuously monitors system performance and resource usage.</li>
+                </ul>
+            </li>
         </ul>
     </li>
     <li><code>supervisor.py</code>: Manages all agents and delegates tasks.</li>
@@ -146,7 +202,7 @@
     <li>Clone the repository:
         <pre><code>git clone https://github.com/sslinkyy/AI-PC-Operator.git
 cd AI-PC-Operator
-        </code></pre>
+</code></pre>
     </li>
     <li>Install the required packages:
         <pre><code>pip install -r requirements.txt</code></pre>
@@ -202,284 +258,363 @@ supervisor.delegate_task("save_model /path/to/model.pth")
 <h3 id="application-management-agents">Application Management Agents</h3>
 
 <h4>ApplicationAgent</h4>
-<p><strong>Purpose</strong>: Manages opening applications.</p>
-<p><strong>Command</strong>: <code>open_application &lt;app_name&gt;</code></p>
-<p><strong>Example</strong>: <code>open_application calculator</code></p>
-
-<h4>WebAgent</h4>
-<p><strong>Purpose</strong>: Creates simple web projects.</p>
-<p><strong>Command</strong>: <code>create_web &lt;project_details&gt;</code></p>
-<p><strong>Example</strong>: <code>create_web MyWebProject</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Manages opening applications.</li>
+    <li><strong>Command</strong>: <code>open_application &lt;app_name&gt;</code></li>
+    <li><strong>Example</strong>: <code>open_application calculator</code></li>
+</ul>
 
 <h3 id="audio-processing-agents">Audio Processing Agents</h3>
 
 <h4>AudioAgent</h4>
-<p><strong>Purpose</strong>: Processes audio files using Whisper for speech-to-text.</p>
-<p><strong>Command</strong>: <code>process_audio &lt;audio_path&gt;</code></p>
-<p><strong>Example</strong>: <code>process_audio /path/to/audio/file.wav</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Processes audio files using Whisper for speech-to-text.</li>
+    <li><strong>Command</strong>: <code>process_audio &lt;audio_path&gt;</code></li>
+    <li><strong>Example</strong>: <code>process_audio /path/to/audio/file.wav</code></li>
+</ul>
 
 <h4>VoiceControlAgent</h4>
-<p><strong>Purpose</strong>: Processes voice commands.</p>
-<p><strong>Command</strong>: <code>voice_command</code></p>
-<p><strong>Example</strong>: Say a command after running: <code>python main.py</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Processes voice commands.</li>
+    <li><strong>Command</strong>: <code>voice_command</code></li>
+    <li><strong>Example</strong>: <code>voice_command</code></li>
+</ul>
 
 <h3 id="communication-agents">Communication Agents</h3>
 
 <h4>EmailAgent</h4>
-<p><strong>Purpose</strong>: Manages email sending and receiving.</p>
-<p><strong>Command</strong>: <code>send_email &lt;recipient&gt; &lt;subject&gt; &lt;body&gt;</code></p>
-<p><strong>Example</strong>: <code>send_email recipient@example.com 'Hello' 'This is a test email.'</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Manages email sending and receiving.</li>
+    <li><strong>Command</strong>: <code>send_email &lt;recipient&gt; &lt;subject&gt; &lt;body&gt;</code></li>
+    <li><strong>Example</strong>: <code>send_email recipient@example.com 'Subject' 'Email body'</code></li>
+</ul>
 
 <h4>NotificationAgent</h4>
-<p><strong>Purpose</strong>: Sends notifications via email, SMS, etc.</p>
-<p><strong>Command</strong>: <code>send_notification &lt;email&gt; &lt;message&gt;</code></p>
-<p><strong>Example</strong>: <code>send_notification user@example.com 'This is a notification message.'</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Sends notifications via email, SMS, etc.</li>
+    <li><strong>Command</strong>: <code>send_notification &lt;email&gt; &lt;message&gt;</code></li>
+    <li><strong>Example</strong>: <code>send_notification recipient@example.com 'Notification message'</code></li>
+</ul>
 
 <h3 id="file-management-agents">File Management Agents</h3>
 
 <h4>FileManagementAgent</h4>
-<p><strong>Purpose</strong>: Manages advanced file operations like compression and encryption.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>compress_file &lt;source&gt; &lt;destination&gt;</code>: Compresses the source directory into a ZIP file at the destination.</li>
-    <li><code>encrypt_file &lt;file_path&gt;</code>: Encrypts the specified file.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>compress_file /path/to/source /path/to/destination</code></li>
-    <li><code>encrypt_file /path/to/file.txt</code></li>
+    <li><strong>Purpose</strong>: Manages advanced file operations like compression and encryption.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>compress_file &lt;source&gt; &lt;destination&gt;</code></li>
+            <li><code>encrypt_file &lt;file_path&gt;</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>compress_file /path/to/source /path/to/destination</code></li>
+            <li><code>encrypt_file /path/to/file</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h4>DocumentAgent</h4>
-<p><strong>Purpose</strong>: Reads and extracts text from documents.</p>
-<p><strong>Command</strong>: <code>read_document &lt;document_path&gt;</code></p>
-<p><strong>Example</strong>: <code>read_document /path/to/document.docx</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Reads and extracts text from documents.</li>
+    <li><strong>Command</strong>: <code>read_document &lt;document_path&gt;</code></li>
+    <li><strong>Example</strong>: <code>read_document /path/to/document.docx</code></li>
+</ul>
 
 <h4>BackupAgent</h4>
-<p><strong>Purpose</strong>: Manages system backups and restores.</p>
-<p><strong>Command</strong>: <code>backup &lt;source&gt; &lt;destination&gt;</code></p>
-<p><strong>Example</strong>: <code>backup /path/to/source /path/to/destination</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Manages system backups and restores.</li>
+    <li><strong>Command</strong>: <code>backup &lt;source&gt; &lt;destination&gt;</code></li>
+    <li><strong>Example</strong>: <code>backup /path/to/source /path/to/destination</code></li>
+</ul>
 
 <h4>ClipboardAgent</h4>
-<p><strong>Purpose</strong>: Interacts with the system clipboard.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>copy_to_clipboard &lt;text&gt;</code>: Copies the specified text to the clipboard.</li>
-    <li><code>paste_from_clipboard</code>: Pastes the text from the clipboard.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>copy_to_clipboard 'Hello, World!'</code></li>
-    <li><code>paste_from_clipboard</code></li>
+    <li><strong>Purpose</strong>: Interacts with the system clipboard.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>copy_to_clipboard &lt;text&gt;</code></li>
+            <li><code>paste_from_clipboard</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>copy_to_clipboard 'Sample text'</code></li>
+            <li><code>paste_from_clipboard</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h4>ChecksumAgent</h4>
-<p><strong>Purpose</strong>: Calculates and verifies file checksums.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>calculate_checksum &lt;file_path&gt;</code>: Calculates the checksum for the specified file.</li>
-    <li><code>verify_checksum &lt;file_path&gt; &lt;expected_checksum&gt;</code>: Verifies the checksum of the specified file.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>calculate_checksum /path/to/file.txt</code></li>
-    <li><code>verify_checksum /path/to/file.txt abcdef123456</code></li>
+    <li><strong>Purpose</strong>: Calculates and verifies file checksums.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>calculate_checksum &lt;file_path&gt;</code></li>
+            <li><code>verify_checksum &lt;file_path&gt; &lt;expected_checksum&gt;</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>calculate_checksum /path/to/file</code></li>
+            <li><code>verify_checksum /path/to/file &lt;expected_checksum&gt;</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h3 id="monitoring-agents">Monitoring Agents</h3>
 
 <h4>SystemMonitoringAgent</h4>
-<p><strong>Purpose</strong>: Monitors system performance metrics.</p>
-<p><strong>Command</strong>: <code>monitor_system</code></p>
-<p><strong>Example</strong>: <code>monitor_system</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Monitors system performance metrics.</li>
+    <li><strong>Command</strong>: <code>monitor_system</code></li>
+    <li><strong>Example</strong>: <code>monitor_system</code></li>
+</ul>
 
 <h4>PowerManagementAgent</h4>
-<p><strong>Purpose</strong>: Manages power settings and monitors battery status.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>check_battery</code>: Checks the battery status.</li>
-    <li><code>shutdown_system</code>: Shuts down the system.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>check_battery</code></li>
-    <li><code>shutdown_system</code></li>
+    <li><strong>Purpose</strong>: Manages power settings and monitors battery status.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>check_battery</code></li>
+            <li><code>shutdown_system</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>check_battery</code></li>
+            <li><code>shutdown_system</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h4>SystemInformationAgent</h4>
-<p><strong>Purpose</strong>: Retrieves detailed system information.</p>
-<p><strong>Command</strong>: <code>get_system_info</code></p>
-<p><strong>Example</strong>: <code>get_system_info</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Retrieves detailed system information.</li>
+    <li><strong>Command</strong>: <code>get_system_info</code></li>
+    <li><strong>Example</strong>: <code>get_system_info</code></li>
+</ul>
 
 <h4>SecurityAgent</h4>
-<p><strong>Purpose</strong>: Handles security operations like scanning for vulnerabilities.</p>
-<p><strong>Command</strong>: <code>scan_vulnerabilities</code></p>
-<p><strong>Example</strong>: <code>scan_vulnerabilities</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Handles security operations like scanning for vulnerabilities.</li>
+    <li><strong>Command</strong>: <code>scan_vulnerabilities</code></li>
+    <li><strong>Example</strong>: <code>scan_vulnerabilities</code></li>
+</ul>
 
 <h3 id="multimedia-agents">Multimedia Agents</h3>
 
 <h4>GraphicsAgent</h4>
-<p><strong>Purpose</strong>: Renders 3D objects and plots graphs.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>render_3d &lt;object_name&gt;</code>: Renders a 3D object.</li>
-    <li><code>plot_graph &lt;equation&gt;</code>: Plots a graph for the given equation.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>render_3d Cube</code></li>
-    <li><code>plot_graph 'x**2'</code></li>
+    <li><strong>Purpose</strong>: Renders 3D objects and plots graphs.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>render_3d &lt;object_name&gt;</code></li>
+            <li><code>plot_graph &lt;equation&gt;</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>render_3d 'Object Name'</code></li>
+            <li><code>plot_graph 'np.sin(x) + np.cos(y)'</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h4>VideoAgent</h4>
-<p><strong>Purpose</strong>: Processes video files.</p>
-<p><strong>Command</strong>: <code>process_video &lt;video_path&gt;</code></p>
-<p><strong>Example</strong>: <code>process_video /path/to/video.mp4</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Processes video files.</li>
+    <li><strong>Command</strong>: <code>process_video &lt;video_path&gt;</code></li>
+    <li><strong>Example</strong>: <code>process_video /path/to/video/file</code></li>
+</ul>
 
 <h4>ScreenCaptureAgent</h4>
-<p><strong>Purpose</strong>: Captures screenshots.</p>
-<p><strong>Command</strong>: <code>capture_screen &lt;file_path&gt;</code></p>
-<p><strong>Example</strong>: <code>capture_screen /path/to/screenshot.png</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Captures screenshots.</li>
+    <li><strong>Command</strong>: <code>capture_screen &lt;file_path&gt;</code></li>
+    <li><strong>Example</strong>: <code>capture_screen /path/to/save/screenshot.png</code></li>
+</ul>
 
 <h3 id="networking-agents">Networking Agents</h3>
 
 <h4>NetworkAgent</h4>
-<p><strong>Purpose</strong>: Performs network operations like pinging and checking connectivity.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>ping &lt;hostname&gt;</code>: Pings the specified hostname.</li>
-    <li><code>check_bandwidth</code>: Checks the network bandwidth.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>ping google.com</code></li>
-    <li><code>check_bandwidth</code></li>
+    <li><strong>Purpose</strong>: Performs network operations like pinging and checking connectivity.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>ping &lt;hostname&gt;</code></li>
+            <li><code>check_bandwidth</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>ping www.google.com</code></li>
+            <li><code>check_bandwidth</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h4>BrowserAutomationAgent</h4>
-<p><strong>Purpose</strong>: Automates browser tasks.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>navigate_to &lt;url&gt;</code>: Navigates to the specified URL.</li>
-    <li><code>find_element &lt;selector&gt;</code>: Finds an element on the web page by its CSS selector.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>navigate_to https://www.google.com</code></li>
-    <li><code>find_element '#search'</code></li>
+    <li><strong>Purpose</strong>: Automates browser tasks.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>navigate_to &lt;url&gt;</code></li>
+            <li><code>find_element &lt;selector&gt;</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>navigate_to https://www.example.com</code></li>
+            <li><code>find_element #element-id</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h3 id="os-management-agents">OS Management Agents</h3>
 
 <h4>OperatingSystemAgent</h4>
-<p><strong>Purpose</strong>: Manages OS-level tasks like navigating directories.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>navigate_directory &lt;directory&gt;</code>: Navigates to the specified directory.</li>
-    <li><code>list_directory</code>: Lists the files in the current directory.</li>
-    <li><code>create_file &lt;file_name&gt;</code>: Creates a file with the specified name.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>navigate_directory /home/user</code></li>
-    <li><code>list_directory</code></li>
-    <li><code>create_file newfile.txt</code></li>
+    <li><strong>Purpose</strong>: Manages OS-level tasks like navigating directories.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>navigate_directory &lt;directory&gt;</code></li>
+            <li><code>list_directory</code></li>
+            <li><code>create_file &lt;file_name&gt;</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>navigate_directory /home/user</code></li>
+            <li><code>list_directory</code></li>
+            <li><code>create_file new_file.txt</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h4>UpdateAgent</h4>
-<p><strong>Purpose</strong>: Manages software updates and installations.</p>
-<p><strong>Command</strong>: <code>update_system</code></p>
-<p><strong>Example</strong>: <code>update_system</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Manages software updates and installations.</li>
+    <li><strong>Command</strong>: <code>update_system</code></li>
+    <li><strong>Example</strong>: <code>update_system</code></li>
+</ul>
 
 <h3 id="scheduler-agents">Scheduler Agents</h3>
 
 <h4>SchedulerAgent</h4>
-<p><strong>Purpose</strong>: Schedules tasks to be executed at specific times.</p>
-<p><strong>Command</strong>: <code>schedule_task &lt;time_str&gt; &lt;task&gt;</code></p>
-<p><strong>Example</strong>: <code>schedule_task 12:00 open_application calculator</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Schedules tasks to be executed at specific times.</li>
+    <li><strong>Command</strong>: <code>schedule_task &lt;time&gt; &lt;task&gt;</code></li>
+    <li><strong>Example</strong>: <code>schedule_task 14:00 open_application calculator</code></li>
+</ul>
 
 <h4>AutomationAgent</h4>
-<p><strong>Purpose</strong>: Runs automation scripts.</p>
-<p><strong>Command</strong>: <code>run_script &lt;script_path&gt;</code></p>
-<p><strong>Example</strong>: <code>run_script /path/to/script.sh</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Runs automation scripts.</li>
+    <li><strong>Command</strong>: <code>run_script &lt;script_path&gt;</code></li>
+    <li><strong>Example</strong>: <code>run_script /path/to/script.sh</code></li>
+</ul>
 
 <h3 id="ai-and-machine-learning-agents">AI and Machine Learning Agents</h3>
 
 <h4>AIModelTrainingAgent</h4>
-<p><strong>Purpose</strong>: Trains and evaluates machine learning models.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>train_model</code>: Trains a machine learning model.</li>
-    <li><code>save_model &lt;file_path&gt;</code>: Saves the trained model to the specified file.</li>
-    <li><code>load_model &lt;file_path&gt;</code>: Loads a model from the specified file.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>train_model</code></li>
-    <li><code>save_model /path/to/model.pth</code></li>
-    <li><code>load_model /path/to/model.pth</code></li>
+    <li><strong>Purpose</strong>: Trains and evaluates machine learning models.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>train_model</code></li>
+            <li><code>save_model &lt;file_path&gt;</code></li>
+            <li><code>load_model &lt;file_path&gt;</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>train_model</code></li>
+            <li><code>save_model /path/to/model.pth</code></li>
+            <li><code>load_model /path/to/model.pth</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h4>NaturalLanguageAgent</h4>
-<p><strong>Purpose</strong>: Processes text for sentiment analysis.</p>
-<p><strong>Command</strong>: <code>process_text &lt;text&gt;</code></p>
-<p><strong>Example</strong>: <code>process_text 'I love programming!'</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Processes text for sentiment analysis.</li>
+    <li><strong>Command</strong>: <code>process_text &lt;text&gt;</code></li>
+    <li><strong>Example</strong>: <code>process_text 'I love programming!'</code></li>
+</ul>
 
 <h4>TensorCoreAgent</h4>
-<p><strong>Purpose</strong>: Provides information about CUDA and tensors.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>cuda_info</code>: Provides information about CUDA availability.</li>
-    <li><code>tensor_info</code>: Provides information about tensors.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>cuda_info</code></li>
-    <li><code>tensor_info</code></li>
+    <li><strong>Purpose</strong>: Provides information about CUDA and tensors.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>cuda_info</code></li>
+            <li><code>tensor_info</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>cuda_info</code></li>
+            <li><code>tensor_info</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h3 id="database-agent">Database Agent</h3>
 
 <h4>DatabaseAgent</h4>
-<p><strong>Purpose</strong>: Interacts with databases (SQL and NoSQL).</p>
-<p><strong>Command</strong>: <code>execute_query &lt;db_path&gt; &lt;query&gt;</code></p>
-<p><strong>Example</strong>: <code>execute_query /path/to/database.db 'SELECT * FROM users'</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Interacts with databases (SQL and NoSQL).</li>
+    <li><strong>Command</strong>: <code>execute_query &lt;db_path&gt; &lt;query&gt;</code></li>
+    <li><strong>Example</strong>: <code>execute_query /path/to/database.db 'SELECT * FROM table_name'</code></li>
+</ul>
 
 <h3 id="utility-agents">Utility Agents</h3>
 
 <h4>InputAgent</h4>
-<p><strong>Purpose</strong>: Handles real-time user input.</p>
-<p><strong>Command</strong>: <code>*delegates to appropriate agent*</code></p>
-<p><strong>Example</strong>: <code>open_application calculator</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Handles real-time user input.</li>
+    <li><strong>Command</strong>: <code>input &lt;user_command&gt;</code></li>
+    <li><strong>Example</strong>: <code>input 'open_application calculator'</code></li>
+</ul>
 
 <h4>PriorityAgent</h4>
-<p><strong>Purpose</strong>: Manages task prioritization.</p>
-<p><strong>Commands</strong>:</p>
 <ul>
-    <li><code>add_task &lt;priority&gt; &lt;task&gt;</code>: Adds a task with the specified priority.</li>
-    <li><code>process_tasks</code>: Processes the queued tasks based on their priority.</li>
-</ul>
-<p><strong>Examples</strong>:</p>
-<ul>
-    <li><code>add_task 1 open_application calculator</code></li>
-    <li><code>process_tasks</code></li>
+    <li><strong>Purpose</strong>: Manages task prioritization.</li>
+    <li><strong>Commands</strong>:
+        <ul>
+            <li><code>add_task &lt;priority&gt; &lt;task&gt;</code></li>
+            <li><code>process_tasks</code></li>
+        </ul>
+    </li>
+    <li><strong>Examples</strong>:
+        <ul>
+            <li><code>add_task 1 open_application calculator</code></li>
+            <li><code>process_tasks</code></li>
+        </ul>
+    </li>
 </ul>
 
 <h4>MathAgent</h4>
-<p><strong>Purpose</strong>: Performs mathematical calculations.</p>
-<p><strong>Command</strong>: <code>calculate &lt;expression&gt;</code></p>
-<p><strong>Example</strong>: <code>calculate '2 + 2 * 2'</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Performs mathematical calculations.</li>
+    <li><strong>Command</strong>: <code>calculate &lt;expression&gt;</code></li>
+    <li><strong>Example</strong>: <code>calculate '2 + 2'</code></li>
+</ul>
 
 <h4>SpeechSynthesisAgent</h4>
-<p><strong>Purpose</strong>: Converts text to speech.</p>
-<p><strong>Command</strong>: <code>speak &lt;text&gt;</code></p>
-<p><strong>Example</strong>: <code>speak 'Hello, World!'</code></p>
+<ul>
+    <li><strong>Purpose</strong>: Converts text to speech.</li>
+    <li><strong>Command</strong>: <code>speak &lt;text&gt;</code></li>
+    <li><strong>Example</strong>: <code>speak 'Hello, world!'</code></li>
+</ul>
 
 <h2 id="contributing">Contributing</h2>
-<p>Contributions are welcome! Please fork the repository and submit a pull request with your improvements.</p>
+<p>Contributions are welcome! Please read the <a href="CONTRIBUTING.md">contributing guidelines</a> before getting started.</p>
 
 <h2 id="license">License</h2>
-<p>This project is licensed under the MIT License.</p>
+<p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.</p>
 
 <h2 id="support">Support</h2>
 <p>For support, please contact <a href="mailto:support@imobracingonline.com">support@imobracingonline.com</a>.</p>
