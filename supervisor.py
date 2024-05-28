@@ -89,7 +89,7 @@ class Supervisor:
             "VirtualAssistantAgent": VirtualAssistantAgent,
             "WebScrapingAgent": WebScrapingAgent,
             "UIAgent": UIAgent,
-            "TestingAgent": TestingAgent  # Register the new TestingAgent here
+            "TestingAgent": TestingAgent
         }
 
         print("Select agents to use (comma separated):")
