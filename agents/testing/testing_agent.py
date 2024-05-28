@@ -1,52 +1,25 @@
 from typing_extensions import override
 import re
+import inspect
 from agents.base_agent import NeuralNetworkAgent
-from agency_swarm.tools import FileSearch
-from instructor import llm_validator
 
 class TestingAgent(NeuralNetworkAgent):
     def __init__(self, name, supervisor):
         super().__init__(name, level=1, supervisor=supervisor)
         self.supervisor = supervisor
         supervisor.add_subordinate(self)
-        self._init_agent()
-
-    def _init_agent(self):
-        self.agent = Agent(
-            name="TestingAgent",
-            description="Agent responsible for testing and debugging other agents.",
-            instructions="./instructions.md",
-            files_folder="./files",
-            schemas_folder="./schemas",
-            tools=[FileSearch],
-            tools_folder="./tools",
-            validation_attempts=1,
-            temperature=0,
-            max_prompt_tokens=25000,
-        )
 
     @override
     def response_validator(self, message):
         pattern = r'(```)((.*\n){5,})(```)'
 
         if re.search(pattern, message):
-            # take only first 100 characters
             raise ValueError(
                 "You returned a code snippet. Please never return code snippets to me. "
                 "Use the FileWriter tool to write the code locally. Then, test it if possible. Continue."
             )
 
-        llm_validator(
-            statement="Verify whether the update from the AI Developer Agent confirms the task's "
-                      "successful completion. If the task remains unfinished, provide guidance "
-                      "within the 'reason' argument on the next steps the agent should take. For "
-                      "instance, if the agent encountered an error, advise the inclusion of debug "
-                      "statements for another attempt. Should the agent outline potential "
-                      "solutions or further actions, direct the agent to execute those plans. "
-                      "Message does not have to contain code snippets. Just confirmation.",
-            client=self.agent.client
-        )(message)
-
+        # Add your own validation logic here if needed
         return message
 
     def execute_task(self, user_command):
@@ -70,12 +43,12 @@ class TestingAgent(NeuralNetworkAgent):
             return self.respond(f"Agent {agent_name} not found.")
 
         test_results = []
-        methods = inspect.getmembers(agent, predicate=inspect.ismethod)
+        methods = inspect.getmembers(self, predicate=inspect.ismethod)
         for method_name, method in methods:
-            if method_name.startswith("test_"):
+            if method_name.startswith(f"test_{agent_name.lower()}"):
                 try:
-                    result = method()
-                    test_results.append(f"Method {method_name}: Passed")
+                    result = method(agent)
+                    test_results.append(result)
                 except Exception as e:
                     test_results.append(f"Method {method_name}: Failed - {str(e)}")
         return self.respond(f"Test results for {agent_name}: {test_results}")
