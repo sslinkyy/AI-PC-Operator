@@ -2,7 +2,7 @@
 AI PC Operator with stock analysis capabilities
 # Hierarchical Agent System with Error Handling
 
-This project implements a hierarchical agent system designed for stock analysis and trading, equipped with advanced error handling capabilities. The system uses a neural network-based architecture for persistent learning and integrates various agents to perform specific tasks.
+This project implements a hierarchical agent system designed for stock analysis and trading, equipped with advanced error handling capabilities. The system uses a neural network-based architecture for persistent learning and integrates various agents to perform specific tasks. Over time, the system aims to reduce its dependence on the OpenAI API by storing knowledge persistently and learning from previous tasks.
 
 ## Table of Contents
 
@@ -20,6 +20,7 @@ This project implements a hierarchical agent system designed for stock analysis 
   - [TopLevelAgentWithErrorHandling](#toplevelagentwitherrorhandling)
   - [TaskManagerWithErrorHandling](#taskmanagerwitherrorhandling)
 - [Error Handling](#error-handling)
+- [Reducing Dependence on OpenAI API](#reducing-dependence-on-openai-api)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -37,11 +38,13 @@ This project implements a hierarchical agent system designed for stock analysis 
 
 - **Advanced Error Handling**: The ErrorHandlingAgent provides robust error resolution strategies for network, file, and API issues.
 
+- **Reducing Dependence on OpenAI API**: The system aims to minimize its reliance on the OpenAI API by persistently storing learned knowledge and using it to handle future tasks.
+
 ## Installation
 
 1. **Clone the Repository**
    ```sh
-   git clone https://github.com/sslinkyy/AI-PC-Operator.git
+   git clone https://github.com/your-username/hierarchical-agent-system.git
    cd hierarchical-agent-system
 Create a Virtual Environment and Activate it
 
@@ -136,6 +139,9 @@ Network Issues: Verifies internet connectivity by attempting to reach Google.
 File Issues: Checks file existence, read/write permissions, and handles permission errors.
 API Issues: Verifies API health by making health check requests.
 Default Resolution: Logs and applies a default resolution for unspecified issues.
+Reducing Dependence on OpenAI API
+The system is designed to gradually reduce its reliance on the OpenAI API by learning from tasks and storing knowledge persistently. When an agent encounters a new task, it first checks its knowledge base. If the task is not found, it queries the OpenAI API and stores the response. Over time, as the knowledge base grows, the system becomes more self-sufficient, relying less on external API calls.
+
 Contributing
 Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
 
