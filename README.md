@@ -1,158 +1,208 @@
 # AI-PC-Operator
 AI PC Operator with stock analysis capabilities
 # Hierarchical Agent System with Error Handling
+# AI System with Multiple Agents
 
-This project implements a hierarchical agent system designed for stock analysis and trading, equipped with advanced error handling capabilities. The system uses a neural network-based architecture for persistent learning and integrates various agents to perform specific tasks. Over time, the system aims to reduce its dependence on the OpenAI API by storing knowledge persistently and learning from previous tasks.
+This project implements a multi-agent system where each agent performs specific tasks, such as managing applications, handling audio processing, performing mathematical calculations, and more. The system includes a supervisor that delegates tasks to the appropriate agents.
 
-## Table of Contents
+## Project Structure
 
-- [Features](#features)
-- [Installation](#installation)
-- [Requirements](#requirements)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Detailed Description](#detailed-description)
-  - [Agent](#agent)
-  - [NeuralNetworkAgent](#neuralnetworkagent)
-  - [StockAnalyst](#stockanalyst)
-  - [StockBroker](#stockbroker)
-  - [ErrorHandlingAgent](#errorhandlingagent)
-  - [TopLevelAgentWithErrorHandling](#toplevelagentwitherrorhandling)
-  - [TaskManagerWithErrorHandling](#taskmanagerwitherrorhandling)
-- [Error Handling](#error-handling)
-- [Reducing Dependence on OpenAI API](#reducing-dependence-on-openai-api)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
+- `agents/`: Contains all agent classes.
+  - `base_agent.py`: The base class for all agents.
+  - `application/`: Agents related to application management.
+    - `application_agent.py`: Manages opening applications.
+    - `web_agent.py`: Creates simple web projects.
+  - `audio/`: Agents related to audio processing.
+    - `audio_agent.py`: Processes audio files using Whisper for speech-to-text.
+    - `voice_control_agent.py`: Processes voice commands.
+  - `communication/`: Agents related to communication.
+    - `email_agent.py`: Manages email sending and receiving.
+    - `notification_agent.py`: Sends notifications via email, SMS, etc.
+  - `file_management/`: Agents related to file management.
+    - `file_management_agent.py`: Manages advanced file operations like compression and encryption.
+    - `document_agent.py`: Reads and extracts text from documents.
+    - `backup_agent.py`: Manages system backups and restores.
+    - `clipboard_agent.py`: Interacts with the system clipboard.
+    - `checksum_agent.py`: Calculates and verifies file checksums.
+  - `monitoring/`: Agents related to system monitoring.
+    - `system_monitoring_agent.py`: Monitors system performance metrics.
+    - `power_management_agent.py`: Manages power settings and monitors battery status.
+    - `system_information_agent.py`: Retrieves detailed system information.
+    - `security_agent.py`: Handles security operations like scanning for vulnerabilities.
+  - `multimedia/`: Agents related to multimedia processing.
+    - `graphics_agent.py`: Renders 3D objects and plots graphs.
+    - `video_agent.py`: Processes video files.
+    - `screen_capture_agent.py`: Captures screenshots.
+  - `networking/`: Agents related to networking.
+    - `network_agent.py`: Performs network operations like pinging and checking connectivity.
+    - `browser_automation_agent.py`: Automates browser tasks.
+  - `os_management/`: Agents related to OS management.
+    - `operating_system_agent.py`: Manages OS-level tasks like navigating directories.
+    - `update_agent.py`: Manages software updates and installations.
+  - `scheduler/`: Agents related to task scheduling.
+    - `scheduler_agent.py`: Schedules tasks to be executed at specific times.
+    - `automation_agent.py`: Runs automation scripts.
+  - `ai/`: Agents related to AI and machine learning.
+    - `ai_model_training_agent.py`: Trains and evaluates machine learning models.
+    - `natural_language_agent.py`: Processes text for sentiment analysis.
+    - `tensor_core_agent.py`: Provides information about CUDA and tensors.
+  - `database/`: Agents related to database management.
+    - `database_agent.py`: Interacts with databases (SQL and NoSQL).
+  - `utility/`: Utility agents for various tasks.
+    - `input_agent.py`: Handles real-time user input.
+    - `priority_agent.py`: Manages task prioritization.
+    - `math_agent.py`: Performs mathematical calculations.
+    - `speech_synthesis_agent.py`: Converts text to speech.
 
-## Features
-
-- **Hierarchical Structure**: The system is composed of multiple agents, each responsible for specific tasks.
-  - **TopLevelAgent**: Oversees the entire system and delegates tasks to subordinate agents.
-  - **StockAnalyst**: Analyzes stock data, market sentiment, and news.
-  - **StockBroker**: Makes trade decisions based on analysis provided by the StockAnalyst.
-  - **ErrorHandlingAgent**: Identifies, logs, and resolves errors autonomously.
-
-- **Persistent Learning**: Agents save and load knowledge to/from disk, allowing them to learn and improve over time.
-
-- **Advanced Error Handling**: The ErrorHandlingAgent provides robust error resolution strategies for network, file, and API issues.
-
-- **Reducing Dependence on OpenAI API**: The system aims to minimize its reliance on the OpenAI API by persistently storing learned knowledge and using it to handle future tasks.
+- `supervisor.py`: Manages all agents and delegates tasks.
+- `main.py`: Entry point for running the system.
+- `requirements.txt`: List of required Python packages.
+- `README.md`: Project documentation.
 
 ## Installation
 
-1. **Clone the Repository**
+1. Clone the repository:
    ```sh
    git clone https://github.com/sslinkyy/AI-PC-Operator.git
    cd AI-PC-Operator
-Create a Virtual Environment and Activate it
-
-sh
-Copy code
-python3 -m venv env
-source env/bin/activate  # On Windows use `env\Scripts\activate`
-Install the Required Packages
-
+Install the required packages:
 sh
 Copy code
 pip install -r requirements.txt
-Requirements
-Python 3.7+
-PyTorch
-Transformers
-yfinance
-requests
-BeautifulSoup4
-textblob
-pickle
-logging
 Usage
-Running the System
-To run the system and test its functionalities:
+Run the main.py file to start the system:
 
 sh
 Copy code
 python main.py
-Example Usage
+Examples
+Adding and Processing Tasks
+Add tasks with priorities and process them:
+
 python
 Copy code
-if __name__ == "__main__":
-    task_manager = TaskManagerWithErrorHandling()
-    task_manager.execute_task("analyze_stock AAPL")
-    task_manager.execute_task("make_trade AAPL")
-    
-    # Simulating an error scenario
-    try:
-        task_manager.execute_task("unknown_command")
-    except Exception as e:
-        task_manager.execute_task(f"handle_error: {str(e)}")
-Project Structure
-main.py: Entry point of the system.
-agent.py: Base agent classes and neural network agent implementations.
-stock_analyst.py: StockAnalyst agent implementation.
-stock_broker.py: StockBroker agent implementation.
-error_handling_agent.py: ErrorHandlingAgent implementation.
-task_manager.py: TaskManager class to oversee and execute tasks.
-Detailed Description
-Agent
-The base class for all agents. It includes methods for managing knowledge persistence, executing tasks, and interacting with other agents.
+supervisor.delegate_task("add_task 1 open_application calculator")
+supervisor.delegate_task("add_task 2 navigate_directory /home/user")
+supervisor.delegate_task("process_tasks")
+Audio Processing
+Process an audio file for transcription:
 
-NeuralNetworkAgent
-A subclass of Agent that includes methods for loading, saving, training, and using neural network models.
+python
+Copy code
+supervisor.delegate_task("process_audio /path/to/audio/file.wav")
+Screen Capture
+Capture a screenshot:
 
-StockAnalyst
-Analyzes stock data, market sentiment, and news headlines.
+python
+Copy code
+supervisor.delegate_task("capture_screen /path/to/save/screenshot.png")
+System Monitoring
+Monitor system performance:
 
-get_stock_data: Retrieves historical stock data using yfinance.
-get_market_sentiment: Analyzes market sentiment from news headlines using TextBlob.
-get_news_analysis: Retrieves recent news headlines related to a stock symbol.
-StockBroker
-Makes trade decisions based on the analysis provided by the StockAnalyst.
+python
+Copy code
+supervisor.delegate_task("monitor_system")
+Sending Emails
+Send an email:
 
-make_trade: Decides whether to buy, sell, or hold a stock.
-decide_trade: Makes a trade decision based on sentiment and stock data.
-calculate_position_size: Determines the position size for a trade based on portfolio value and stock volatility.
-set_stop_loss: Sets a stop loss price.
-set_take_profit: Sets a take profit price.
-get_portfolio_value: Retrieves the current portfolio value.
-calculate_moving_average: Calculates the moving average of stock prices.
-calculate_volatility: Calculates the volatility of stock prices.
-ErrorHandlingAgent
-Identifies, logs, and resolves errors autonomously.
+python
+Copy code
+supervisor.delegate_task("send_email recipient@example.com 'Subject' 'Email body'")
+Training and Saving Models
+Train a model and save it:
 
-handle_error: Logs the error and attempts to resolve it.
-resolve_network_issue: Attempts to resolve network connectivity issues.
-resolve_file_issue: Attempts to resolve file-related issues.
-resolve_api_issue: Attempts to resolve API-related issues.
-default_resolution: Applies a default resolution for unspecified issues.
-TopLevelAgentWithErrorHandling
-Oversees the entire system and delegates tasks to subordinate agents. It integrates the ErrorHandlingAgent for robust error handling.
+python
+Copy code
+supervisor.delegate_task("train_model")
+supervisor.delegate_task("save_model /path/to/model.pth")
+Loading Models
+Load a previously saved model:
 
-TaskManagerWithErrorHandling
-Oversees task execution and error handling. It coordinates between the TopLevelAgentWithErrorHandling, StockAnalyst, StockBroker, and ErrorHandlingAgent.
-
-Error Handling
-The ErrorHandlingAgent provides comprehensive strategies to resolve common issues:
-
-Network Issues: Verifies internet connectivity by attempting to reach Google.
-File Issues: Checks file existence, read/write permissions, and handles permission errors.
-API Issues: Verifies API health by making health check requests.
-Default Resolution: Logs and applies a default resolution for unspecified issues.
-Reducing Dependence on OpenAI API
-The system is designed to gradually reduce its reliance on the OpenAI API by learning from tasks and storing knowledge persistently. When an agent encounters a new task, it first checks its knowledge base. If the task is not found, it queries the OpenAI API and stores the response. Over time, as the knowledge base grows, the system becomes more self-sufficient, relying less on external API calls.
-
+python
+Copy code
+supervisor.delegate_task("load_model /path/to/model.pth")
+Available Agents and Commands
+Application Management Agents
+ApplicationAgent
+Command: open_application <app_name>
+WebAgent
+Command: create_web <project_details>
+Audio Processing Agents
+AudioAgent
+Command: process_audio <audio_path>
+VoiceControlAgent
+Command: voice_command
+Communication Agents
+EmailAgent
+Command: send_email <recipient> <subject> <body>
+NotificationAgent
+Command: send_notification <email> <message>
+File Management Agents
+FileManagementAgent
+Commands: compress_file <source> <destination>, encrypt_file <file_path>
+DocumentAgent
+Command: read_document <document_path>
+BackupAgent
+Command: backup <source> <destination>
+ClipboardAgent
+Commands: copy_to_clipboard <text>, paste_from_clipboard
+ChecksumAgent
+Commands: calculate_checksum <file_path>, verify_checksum <file_path> <expected_checksum>
+Monitoring Agents
+SystemMonitoringAgent
+Command: monitor_system
+PowerManagementAgent
+Commands: check_battery, shutdown_system
+SystemInformationAgent
+Command: get_system_info
+SecurityAgent
+Command: scan_vulnerabilities
+Multimedia Agents
+GraphicsAgent
+Commands: render_3d <object_name>, plot_graph <equation>
+VideoAgent
+Command: process_video <video_path>
+ScreenCaptureAgent
+Command: capture_screen <file_path>
+Networking Agents
+NetworkAgent
+Commands: ping <hostname>, check_bandwidth
+BrowserAutomationAgent
+Commands: navigate_to <url>, find_element <selector>
+OS Management Agents
+OperatingSystemAgent
+Commands: navigate_directory <directory>, list_directory, create_file <file_name>
+UpdateAgent
+Command: update_system
+Scheduler Agents
+SchedulerAgent
+Command: schedule_task <time_str> <task>
+AutomationAgent
+Command: run_script <script_path>
+AI and Machine Learning Agents
+AIModelTrainingAgent
+Commands: train_model, save_model <file_path>, load_model <file_path>
+NaturalLanguageAgent
+Command: process_text <text>
+TensorCoreAgent
+Commands: cuda_info, tensor_info
+Database Agent
+DatabaseAgent
+Command: execute_query <db_path> <query>
+Utility Agents
+InputAgent
+Command: *delegates to appropriate agent*
+PriorityAgent
+Commands: add_task <priority> <task>, process_tasks
+MathAgent
+Command: calculate <expression>
+SpeechSynthesisAgent
+Command: speak <text>
 Contributing
-Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+Contributions are welcome! Please fork the repository and submit a pull request with your improvements.
 
 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
 
-Acknowledgements
-PyTorch
-Hugging Face Transformers
-yfinance
-BeautifulSoup
-TextBlob
-Contact
-For any questions or issues, please contact support@imobracingonline.com.
+Support
+For support, please contact support@imobracingonline.com.
