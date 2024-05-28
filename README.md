@@ -1,9 +1,12 @@
-██╗ ███╗ ███╗  ██████╗ ██████╗
-██║████╗ ████║██╔═══██╗██╔══██╗
-██║██╔████╔██║██║   ██║██████╔╝
-██║██║╚██╔╝██║██║   ██║██╔══██╗
-██║██║ ╚═╝ ██║╚██████╔╝██████║
-╚═╝╚═╝ ╚═╝ ╚══    ═══╝ ╚═╝ ╚═╝
+
+
+
+              ██╗ ███╗ ███╗  ██████╗ ██████╗
+              ══ ████╗ ████║██╔═══██╗██╔══██║
+              ██║██╔████╔██║██║   ██║██████ ║
+              ██║██║╚██╔╝██║██║   ██║██╔══██║
+              ██║██║ ╚═╝ ██║╚██████╔╝██████║
+              ╚═╝╚═╝ ╚═╝ ╚═╝ ╚═════╝ ╚═╝═╚═╝
 # AI System with Multiple Agents
 
 This project implements a multi-agent system where each agent performs specific tasks, such as managing applications, handling audio processing, performing mathematical calculations, and more. The system includes a supervisor that delegates tasks to the appropriate agents.
