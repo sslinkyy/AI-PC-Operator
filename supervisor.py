@@ -30,6 +30,17 @@ from agents.utility.input_agent import InputAgent
 from agents.utility.priority_agent import PriorityAgent
 from agents.utility.math_agent import MathAgent
 from agents.utility.speech_synthesis_agent import SpeechSynthesisAgent
+from agents.ui.ui_agent import UIAgent
+from agents.file_transfer.file_transfer_agent import FileTransferAgent
+from agents.log_management.log_management_agent import LogManagementAgent
+from agents.data_visualization.data_visualization_agent import DataVisualizationAgent
+from agents.personal_assistant.personal_assistant_agent import PersonalAssistantAgent
+from agents.backup_restore.backup_restore_agent import BackupRestoreAgent
+from agents.email_client.email_client_agent import EmailClientAgent
+from agents.data_processing.data_processing_agent import DataProcessingAgent
+from agents.web_scraping.web_scraping_agent import WebScrapingAgent
+from agents.virtual_assistant.virtual_assistant_agent import VirtualAssistantAgent
+from agents.performance_monitoring.performance_monitoring_agent import PerformanceMonitoringAgent
 
 class Supervisor:
     def __init__(self):
@@ -71,6 +82,17 @@ class Supervisor:
             "SystemInformationAgent": SystemInformationAgent,
             "BrowserAutomationAgent": BrowserAutomationAgent,
             "SpeechSynthesisAgent": SpeechSynthesisAgent,
+            "UIAgent": UIAgent,
+            "FileTransferAgent": FileTransferAgent,
+            "LogManagementAgent": LogManagementAgent,
+            "DataVisualizationAgent": DataVisualizationAgent,
+            "PersonalAssistantAgent": PersonalAssistantAgent,
+            "BackupRestoreAgent": BackupRestoreAgent,
+            "EmailClientAgent": EmailClientAgent,
+            "DataProcessingAgent": DataProcessingAgent,
+            "WebScrapingAgent": WebScrapingAgent,
+            "VirtualAssistantAgent": VirtualAssistantAgent,
+            "PerformanceMonitoringAgent": PerformanceMonitoringAgent,
         }
 
         print("Select agents to use (comma separated):")
