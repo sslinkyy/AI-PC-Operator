@@ -1,347 +1,488 @@
-# AI System with Multiple Agents
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI System with Multiple Agents</title>
+</head>
+<body>
 
-This project implements a multi-agent system where each agent performs specific tasks, such as managing applications, handling audio processing, performing mathematical calculations, and more. The system includes a supervisor that delegates tasks to the appropriate agents.
+<h1>AI System with Multiple Agents</h1>
 
-## Table of Contents
+<p>This project implements a multi-agent system where each agent performs specific tasks, such as managing applications, handling audio processing, performing mathematical calculations, and more. The system includes a supervisor that delegates tasks to the appropriate agents.</p>
 
-1. [Project Structure](#project-structure)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Examples](#examples)
-    1. [Adding and Processing Tasks](#adding-and-processing-tasks)
-    2. [Audio Processing](#audio-processing)
-    3. [Screen Capture](#screen-capture)
-    4. [System Monitoring](#system-monitoring)
-    5. [Sending Emails](#sending-emails)
-    6. [Training and Saving Models](#training-and-saving-models)
-    7. [Loading Models](#loading-models)
-5. [Available Agents and Commands](#available-agents-and-commands)
-    1. [Application Management Agents](#application-management-agents)
-    2. [Audio Processing Agents](#audio-processing-agents)
-    3. [Communication Agents](#communication-agents)
-    4. [File Management Agents](#file-management-agents)
-    5. [Monitoring Agents](#monitoring-agents)
-    6. [Multimedia Agents](#multimedia-agents)
-    7. [Networking Agents](#networking-agents)
-    8. [OS Management Agents](#os-management-agents)
-    9. [Scheduler Agents](#scheduler-agents)
-    10. [AI and Machine Learning Agents](#ai-and-machine-learning-agents)
-    11. [Database Agent](#database-agent)
-    12. [Utility Agents](#utility-agents)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Support](#support)
+<h2>Table of Contents</h2>
+<ul>
+    <li><a href="#project-structure">Project Structure</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#examples">Examples</a>
+        <ul>
+            <li><a href="#adding-and-processing-tasks">Adding and Processing Tasks</a></li>
+            <li><a href="#audio-processing">Audio Processing</a></li>
+            <li><a href="#screen-capture">Screen Capture</a></li>
+            <li><a href="#system-monitoring">System Monitoring</a></li>
+            <li><a href="#sending-emails">Sending Emails</a></li>
+            <li><a href="#training-and-saving-models">Training and Saving Models</a></li>
+            <li><a href="#loading-models">Loading Models</a></li>
+        </ul>
+    </li>
+    <li><a href="#available-agents-and-commands">Available Agents and Commands</a>
+        <ul>
+            <li><a href="#application-management-agents">Application Management Agents</a></li>
+            <li><a href="#audio-processing-agents">Audio Processing Agents</a></li>
+            <li><a href="#communication-agents">Communication Agents</a></li>
+            <li><a href="#file-management-agents">File Management Agents</a></li>
+            <li><a href="#monitoring-agents">Monitoring Agents</a></li>
+            <li><a href="#multimedia-agents">Multimedia Agents</a></li>
+            <li><a href="#networking-agents">Networking Agents</a></li>
+            <li><a href="#os-management-agents">OS Management Agents</a></li>
+            <li><a href="#scheduler-agents">Scheduler Agents</a></li>
+            <li><a href="#ai-and-machine-learning-agents">AI and Machine Learning Agents</a></li>
+            <li><a href="#database-agent">Database Agent</a></li>
+            <li><a href="#utility-agents">Utility Agents</a></li>
+        </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#support">Support</a></li>
+</ul>
 
-## Project Structure
+<h2 id="project-structure">Project Structure</h2>
+<ul>
+    <li><code>agents/</code>: Contains all agent classes.
+        <ul>
+            <li><code>base_agent.py</code>: The base class for all agents.</li>
+            <li><code>application/</code>: Agents related to application management.
+                <ul>
+                    <li><code>application_agent.py</code>: Manages opening applications.</li>
+                    <li><code>web_agent.py</code>: Creates simple web projects.</li>
+                </ul>
+            </li>
+            <li><code>audio/</code>: Agents related to audio processing.
+                <ul>
+                    <li><code>audio_agent.py</code>: Processes audio files using Whisper for speech-to-text.</li>
+                    <li><code>voice_control_agent.py</code>: Processes voice commands.</li>
+                </ul>
+            </li>
+            <li><code>communication/</code>: Agents related to communication.
+                <ul>
+                    <li><code>email_agent.py</code>: Manages email sending and receiving.</li>
+                    <li><code>notification_agent.py</code>: Sends notifications via email, SMS, etc.</li>
+                </ul>
+            </li>
+            <li><code>file_management/</code>: Agents related to file management.
+                <ul>
+                    <li><code>file_management_agent.py</code>: Manages advanced file operations like compression and encryption.</li>
+                    <li><code>document_agent.py</code>: Reads and extracts text from documents.</li>
+                    <li><code>backup_agent.py</code>: Manages system backups and restores.</li>
+                    <li><code>clipboard_agent.py</code>: Interacts with the system clipboard.</li>
+                    <li><code>checksum_agent.py</code>: Calculates and verifies file checksums.</li>
+                </ul>
+            </li>
+            <li><code>monitoring/</code>: Agents related to system monitoring.
+                <ul>
+                    <li><code>system_monitoring_agent.py</code>: Monitors system performance metrics.</li>
+                    <li><code>power_management_agent.py</code>: Manages power settings and monitors battery status.</li>
+                    <li><code>system_information_agent.py</code>: Retrieves detailed system information.</li>
+                    <li><code>security_agent.py</code>: Handles security operations like scanning for vulnerabilities.</li>
+                </ul>
+            </li>
+            <li><code>multimedia/</code>: Agents related to multimedia processing.
+                <ul>
+                    <li><code>graphics_agent.py</code>: Renders 3D objects and plots graphs.</li>
+                    <li><code>video_agent.py</code>: Processes video files.</li>
+                    <li><code>screen_capture_agent.py</code>: Captures screenshots.</li>
+                </ul>
+            </li>
+            <li><code>networking/</code>: Agents related to networking.
+                <ul>
+                    <li><code>network_agent.py</code>: Performs network operations like pinging and checking connectivity.</li>
+                    <li><code>browser_automation_agent.py</code>: Automates browser tasks.</li>
+                </ul>
+            </li>
+            <li><code>os_management/</code>: Agents related to OS management.
+                <ul>
+                    <li><code>operating_system_agent.py</code>: Manages OS-level tasks like navigating directories.</li>
+                    <li><code>update_agent.py</code>: Manages software updates and installations.</li>
+                </ul>
+            </li>
+            <li><code>scheduler/</code>: Agents related to task scheduling.
+                <ul>
+                    <li><code>scheduler_agent.py</code>: Schedules tasks to be executed at specific times.</li>
+                    <li><code>automation_agent.py</code>: Runs automation scripts.</li>
+                </ul>
+            </li>
+            <li><code>ai/</code>: Agents related to AI and machine learning.
+                <ul>
+                    <li><code>ai_model_training_agent.py</code>: Trains and evaluates machine learning models.</li>
+                    <li><code>natural_language_agent.py</code>: Processes text for sentiment analysis.</li>
+                    <li><code>tensor_core_agent.py</code>: Provides information about CUDA and tensors.</li>
+                </ul>
+            </li>
+            <li><code>database/</code>: Agents related to database management.
+                <ul>
+                    <li><code>database_agent.py</code>: Interacts with databases (SQL and NoSQL).</li>
+                </ul>
+            </li>
+            <li><code>utility/</code>: Utility agents for various tasks.
+                <ul>
+                    <li><code>input_agent.py</code>: Handles real-time user input.</li>
+                    <li><code>priority_agent.py</code>: Manages task prioritization.</li>
+                    <li><code>math_agent.py</code>: Performs mathematical calculations.</li>
+                    <li><code>speech_synthesis_agent.py</code>: Converts text to speech.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><code>supervisor.py</code>: Manages all agents and delegates tasks.</li>
+    <li><code>main.py</code>: Entry point for running the system.</li>
+    <li><code>requirements.txt</code>: List of required Python packages.</li>
+    <li><code>README.md</code>: Project documentation.</li>
+</ul>
 
-- `agents/`: Contains all agent classes.
-  - `base_agent.py`: The base class for all agents.
-  - `application/`: Agents related to application management.
-    - `application_agent.py`: Manages opening applications.
-    - `web_agent.py`: Creates simple web projects.
-  - `audio/`: Agents related to audio processing.
-    - `audio_agent.py`: Processes audio files using Whisper for speech-to-text.
-    - `voice_control_agent.py`: Processes voice commands.
-  - `communication/`: Agents related to communication.
-    - `email_agent.py`: Manages email sending and receiving.
-    - `notification_agent.py`: Sends notifications via email, SMS, etc.
-  - `file_management/`: Agents related to file management.
-    - `file_management_agent.py`: Manages advanced file operations like compression and encryption.
-    - `document_agent.py`: Reads and extracts text from documents.
-    - `backup_agent.py`: Manages system backups and restores.
-    - `clipboard_agent.py`: Interacts with the system clipboard.
-    - `checksum_agent.py`: Calculates and verifies file checksums.
-  - `monitoring/`: Agents related to system monitoring.
-    - `system_monitoring_agent.py`: Monitors system performance metrics.
-    - `power_management_agent.py`: Manages power settings and monitors battery status.
-    - `system_information_agent.py`: Retrieves detailed system information.
-    - `security_agent.py`: Handles security operations like scanning for vulnerabilities.
-  - `multimedia/`: Agents related to multimedia processing.
-    - `graphics_agent.py`: Renders 3D objects and plots graphs.
-    - `video_agent.py`: Processes video files.
-    - `screen_capture_agent.py`: Captures screenshots.
-  - `networking/`: Agents related to networking.
-    - `network_agent.py`: Performs network operations like pinging and checking connectivity.
-    - `browser_automation_agent.py`: Automates browser tasks.
-  - `os_management/`: Agents related to OS management.
-    - `operating_system_agent.py`: Manages OS-level tasks like navigating directories.
-    - `update_agent.py`: Manages software updates and installations.
-  - `scheduler/`: Agents related to task scheduling.
-    - `scheduler_agent.py`: Schedules tasks to be executed at specific times.
-    - `automation_agent.py`: Runs automation scripts.
-  - `ai/`: Agents related to AI and machine learning.
-    - `ai_model_training_agent.py`: Trains and evaluates machine learning models.
-    - `natural_language_agent.py`: Processes text for sentiment analysis.
-    - `tensor_core_agent.py`: Provides information about CUDA and tensors.
-  - `database/`: Agents related to database management.
-    - `database_agent.py`: Interacts with databases (SQL and NoSQL).
-  - `utility/`: Utility agents for various tasks.
-    - `input_agent.py`: Handles real-time user input.
-    - `priority_agent.py`: Manages task prioritization.
-    - `math_agent.py`: Performs mathematical calculations.
-    - `speech_synthesis_agent.py`: Converts text to speech.
+<h2 id="installation">Installation</h2>
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone https://github.com/sslinkyy/AI-PC-Operator.git
+cd AI-PC-Operator
+        </code></pre>
+    </li>
+    <li>Install the required packages:
+        <pre><code>pip install -r requirements.txt</code></pre>
+    </li>
+</ol>
 
-- `supervisor.py`: Manages all agents and delegates tasks.
-- `main.py`: Entry point for running the system.
-- `requirements.txt`: List of required Python packages.
-- `README.md`: Project documentation.
+<h2 id="usage">Usage</h2>
+<p>Run the <code>main.py</code> file to start the system:</p>
+<pre><code>python main.py</code></pre>
 
-## Installation
+<h2 id="examples">Examples</h2>
 
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/sslinkyy/AI-PC-Operator.git
-   cd AI-PC-Operator
-Install the required packages:
-sh
-Copy code
-pip install -r requirements.txt
-Usage
-Run the main.py file to start the system:
-
-sh
-Copy code
-python main.py
-Examples
-Adding and Processing Tasks
-Add tasks with priorities and process them:
-
-python
-Copy code
-supervisor.delegate_task("add_task 1 open_application calculator")
+<h3 id="adding-and-processing-tasks">Adding and Processing Tasks</h3>
+<p>Add tasks with priorities and process them:</p>
+<pre><code>supervisor.delegate_task("add_task 1 open_application calculator")
 supervisor.delegate_task("add_task 2 navigate_directory /home/user")
 supervisor.delegate_task("process_tasks")
-Audio Processing
-Process an audio file for transcription:
+</code></pre>
 
-python
-Copy code
-supervisor.delegate_task("process_audio /path/to/audio/file.wav")
-Screen Capture
-Capture a screenshot:
+<h3 id="audio-processing">Audio Processing</h3>
+<p>Process an audio file for transcription:</p>
+<pre><code>supervisor.delegate_task("process_audio /path/to/audio/file.wav")
+</code></pre>
 
-python
-Copy code
-supervisor.delegate_task("capture_screen /path/to/save/screenshot.png")
-System Monitoring
-Monitor system performance:
+<h3 id="screen-capture">Screen Capture</h3>
+<p>Capture a screenshot:</p>
+<pre><code>supervisor.delegate_task("capture_screen /path/to/save/screenshot.png")
+</code></pre>
 
-python
-Copy code
-supervisor.delegate_task("monitor_system")
-Sending Emails
-Send an email:
+<h3 id="system-monitoring">System Monitoring</h3>
+<p>Monitor system performance:</p>
+<pre><code>supervisor.delegate_task("monitor_system")
+</code></pre>
 
-python
-Copy code
-supervisor.delegate_task("send_email recipient@example.com 'Subject' 'Email body'")
-Training and Saving Models
-Train a model and save it:
+<h3 id="sending-emails">Sending Emails</h3>
+<p>Send an email:</p>
+<pre><code>supervisor.delegate_task("send_email recipient@example.com 'Subject' 'Email body'")
+</code></pre>
 
-python
-Copy code
-supervisor.delegate_task("train_model")
+<h3 id="training-and-saving-models">Training and Saving Models</h3>
+<p>Train a model and save it:</p>
+<pre><code>supervisor.delegate_task("train_model")
 supervisor.delegate_task("save_model /path/to/model.pth")
-Loading Models
-Load a previously saved model:
+</code></pre>
 
-python
-Copy code
-supervisor.delegate_task("load_model /path/to/model.pth")
-Available Agents and Commands
-Application Management Agents
-ApplicationAgent
-Purpose: Manages opening applications.
-Command: open_application <app_name>
-Example: open_application calculator
-WebAgent
-Purpose: Creates simple web projects.
-Command: create_web <project_details>
-Example: create_web MyWebProject
-Audio Processing Agents
-AudioAgent
-Purpose: Processes audio files using Whisper for speech-to-text.
-Command: process_audio <audio_path>
-Example: process_audio /path/to/audio/file.wav
-VoiceControlAgent
-Purpose: Processes voice commands.
-Command: voice_command
-Example: Say a command after running: python main.py
-Communication Agents
-EmailAgent
-Purpose: Manages email sending and receiving.
-Command: send_email <recipient> <subject> <body>
-Example: send_email recipient@example.com 'Hello' 'This is a test email.'
-NotificationAgent
-Purpose: Sends notifications via email, SMS, etc.
-Command: send_notification <email> <message>
-Example: send_notification user@example.com 'This is a notification message.'
-File Management Agents
-FileManagementAgent
-Purpose: Manages advanced file operations like compression and encryption.
-Commands:
-compress_file <source> <destination>: Compresses the source directory into a ZIP file at the destination.
-encrypt_file <file_path>: Encrypts the specified file.
-Examples:
-compress_file /path/to/source /path/to/destination
-encrypt_file /path/to/file.txt
-DocumentAgent
-Purpose: Reads and extracts text from documents.
-Command: read_document <document_path>
-Example: read_document /path/to/document.docx
-BackupAgent
-Purpose: Manages system backups and restores.
-Command: backup <source> <destination>
-Example: backup /path/to/source /path/to/destination
-ClipboardAgent
-Purpose: Interacts with the system clipboard.
-Commands:
-copy_to_clipboard <text>: Copies the specified text to the clipboard.
-paste_from_clipboard: Pastes the text from the clipboard.
-Examples:
-copy_to_clipboard 'Hello, World!'
-paste_from_clipboard
-ChecksumAgent
-Purpose: Calculates and verifies file checksums.
-Commands:
-calculate_checksum <file_path>: Calculates the checksum for the specified file.
-verify_checksum <file_path> <expected_checksum>: Verifies the checksum of the specified file.
-Examples:
-calculate_checksum /path/to/file.txt
-verify_checksum /path/to/file.txt abcdef123456
-Monitoring Agents
-SystemMonitoringAgent
-Purpose: Monitors system performance metrics.
-Command: monitor_system
-Example: monitor_system
-PowerManagementAgent
-Purpose: Manages power settings and monitors battery status.
-Commands:
-check_battery: Checks the battery status.
-shutdown_system: Shuts down the system.
-Examples:
-check_battery
-shutdown_system
-SystemInformationAgent
-Purpose: Retrieves detailed system information.
-Command: get_system_info
-Example: get_system_info
-SecurityAgent
-Purpose: Handles security operations like scanning for vulnerabilities.
-Command: scan_vulnerabilities
-Example: scan_vulnerabilities
-Multimedia Agents
-GraphicsAgent
-Purpose: Renders 3D objects and plots graphs.
-Commands:
-render_3d <object_name>: Renders a 3D object.
-plot_graph <equation>: Plots a graph for the given equation.
-Examples:
-render_3d Cube
-plot_graph 'x**2'
-VideoAgent
-Purpose: Processes video files.
-Command: process_video <video_path>
-Example: process_video /path/to/video.mp4
-ScreenCaptureAgent
-Purpose: Captures screenshots.
-Command: capture_screen <file_path>
-Example: capture_screen /path/to/screenshot.png
-Networking Agents
-NetworkAgent
-Purpose: Performs network operations like pinging and checking connectivity.
-Commands:
-ping <hostname>: Pings the specified hostname.
-check_bandwidth: Checks the network bandwidth.
-Examples:
-ping google.com
-check_bandwidth
-BrowserAutomationAgent
-Purpose: Automates browser tasks.
-Commands:
-navigate_to <url>: Navigates to the specified URL.
-find_element <selector>: Finds an element on the web page by its CSS selector.
-Examples:
-navigate_to https://www.google.com
-find_element '#search'
-OS Management Agents
-OperatingSystemAgent
-Purpose: Manages OS-level tasks like navigating directories.
-Commands:
-navigate_directory <directory>: Navigates to the specified directory.
-list_directory: Lists the files in the current directory.
-create_file <file_name>: Creates a file with the specified name.
-Examples:
-navigate_directory /home/user
-list_directory
-create_file newfile.txt
-UpdateAgent
-Purpose: Manages software updates and installations.
-Command: update_system
-Example: update_system
-Scheduler Agents
-SchedulerAgent
-Purpose: Schedules tasks to be executed at specific times.
-Command: schedule_task <time_str> <task>
-Example: schedule_task 12:00 open_application calculator
-AutomationAgent
-Purpose: Runs automation scripts.
-Command: run_script <script_path>
-Example: run_script /path/to/script.sh
-AI and Machine Learning Agents
-AIModelTrainingAgent
-Purpose: Trains and evaluates machine learning models.
-Commands:
-train_model: Trains a machine learning model.
-save_model <file_path>: Saves the trained model to the specified file.
-load_model <file_path>: Loads a model from the specified file.
-Examples:
-train_model
-save_model /path/to/model.pth
-load_model /path/to/model.pth
-NaturalLanguageAgent
-Purpose: Processes text for sentiment analysis.
-Command: process_text <text>
-Example: process_text 'I love programming!'
-TensorCoreAgent
-Purpose: Provides information about CUDA and tensors.
-Commands:
-cuda_info: Provides information about CUDA availability.
-tensor_info: Provides information about tensors.
-Examples:
-cuda_info
-tensor_info
-Database Agent
-DatabaseAgent
-Purpose: Interacts with databases (SQL and NoSQL).
-Command: execute_query <db_path> <query>
-Example: execute_query /path/to/database.db 'SELECT * FROM users'
-Utility Agents
-InputAgent
-Purpose: Handles real-time user input.
-Command: *delegates to appropriate agent*
-Example: open_application calculator
-PriorityAgent
-Purpose: Manages task prioritization.
-Commands:
-add_task <priority> <task>: Adds a task with the specified priority.
-process_tasks: Processes the queued tasks based on their priority.
-Examples:
-add_task 1 open_application calculator
-process_tasks
-MathAgent
-Purpose: Performs mathematical calculations.
-Command: calculate <expression>
-Example: calculate '2 + 2 * 2'
-SpeechSynthesisAgent
-Purpose: Converts text to speech.
-Command: speak <text>
-Example: speak 'Hello, World!'
-Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your improvements.
+<h3 id="loading-models">Loading Models</h3>
+<p>Load a previously saved model:</p>
+<pre><code>supervisor.delegate_task("load_model /path/to/model.pth")
+</code></pre>
 
-License
-This project is licensed under the MIT License.
+<h2 id="available-agents-and-commands">Available Agents and Commands</h2>
 
-Support
-For support, please contact support@imobracingonline.com.
+<h3 id="application-management-agents">Application Management Agents</h3>
+
+<h4>ApplicationAgent</h4>
+<p><strong>Purpose</strong>: Manages opening applications.</p>
+<p><strong>Command</strong>: <code>open_application &lt;app_name&gt;</code></p>
+<p><strong>Example</strong>: <code>open_application calculator</code></p>
+
+<h4>WebAgent</h4>
+<p><strong>Purpose</strong>: Creates simple web projects.</p>
+<p><strong>Command</strong>: <code>create_web &lt;project_details&gt;</code></p>
+<p><strong>Example</strong>: <code>create_web MyWebProject</code></p>
+
+<h3 id="audio-processing-agents">Audio Processing Agents</h3>
+
+<h4>AudioAgent</h4>
+<p><strong>Purpose</strong>: Processes audio files using Whisper for speech-to-text.</p>
+<p><strong>Command</strong>: <code>process_audio &lt;audio_path&gt;</code></p>
+<p><strong>Example</strong>: <code>process_audio /path/to/audio/file.wav</code></p>
+
+<h4>VoiceControlAgent</h4>
+<p><strong>Purpose</strong>: Processes voice commands.</p>
+<p><strong>Command</strong>: <code>voice_command</code></p>
+<p><strong>Example</strong>: Say a command after running: <code>python main.py</code></p>
+
+<h3 id="communication-agents">Communication Agents</h3>
+
+<h4>EmailAgent</h4>
+<p><strong>Purpose</strong>: Manages email sending and receiving.</p>
+<p><strong>Command</strong>: <code>send_email &lt;recipient&gt; &lt;subject&gt; &lt;body&gt;</code></p>
+<p><strong>Example</strong>: <code>send_email recipient@example.com 'Hello' 'This is a test email.'</code></p>
+
+<h4>NotificationAgent</h4>
+<p><strong>Purpose</strong>: Sends notifications via email, SMS, etc.</p>
+<p><strong>Command</strong>: <code>send_notification &lt;email&gt; &lt;message&gt;</code></p>
+<p><strong>Example</strong>: <code>send_notification user@example.com 'This is a notification message.'</code></p>
+
+<h3 id="file-management-agents">File Management Agents</h3>
+
+<h4>FileManagementAgent</h4>
+<p><strong>Purpose</strong>: Manages advanced file operations like compression and encryption.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>compress_file &lt;source&gt; &lt;destination&gt;</code>: Compresses the source directory into a ZIP file at the destination.</li>
+    <li><code>encrypt_file &lt;file_path&gt;</code>: Encrypts the specified file.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>compress_file /path/to/source /path/to/destination</code></li>
+    <li><code>encrypt_file /path/to/file.txt</code></li>
+</ul>
+
+<h4>DocumentAgent</h4>
+<p><strong>Purpose</strong>: Reads and extracts text from documents.</p>
+<p><strong>Command</strong>: <code>read_document &lt;document_path&gt;</code></p>
+<p><strong>Example</strong>: <code>read_document /path/to/document.docx</code></p>
+
+<h4>BackupAgent</h4>
+<p><strong>Purpose</strong>: Manages system backups and restores.</p>
+<p><strong>Command</strong>: <code>backup &lt;source&gt; &lt;destination&gt;</code></p>
+<p><strong>Example</strong>: <code>backup /path/to/source /path/to/destination</code></p>
+
+<h4>ClipboardAgent</h4>
+<p><strong>Purpose</strong>: Interacts with the system clipboard.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>copy_to_clipboard &lt;text&gt;</code>: Copies the specified text to the clipboard.</li>
+    <li><code>paste_from_clipboard</code>: Pastes the text from the clipboard.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>copy_to_clipboard 'Hello, World!'</code></li>
+    <li><code>paste_from_clipboard</code></li>
+</ul>
+
+<h4>ChecksumAgent</h4>
+<p><strong>Purpose</strong>: Calculates and verifies file checksums.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>calculate_checksum &lt;file_path&gt;</code>: Calculates the checksum for the specified file.</li>
+    <li><code>verify_checksum &lt;file_path&gt; &lt;expected_checksum&gt;</code>: Verifies the checksum of the specified file.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>calculate_checksum /path/to/file.txt</code></li>
+    <li><code>verify_checksum /path/to/file.txt abcdef123456</code></li>
+</ul>
+
+<h3 id="monitoring-agents">Monitoring Agents</h3>
+
+<h4>SystemMonitoringAgent</h4>
+<p><strong>Purpose</strong>: Monitors system performance metrics.</p>
+<p><strong>Command</strong>: <code>monitor_system</code></p>
+<p><strong>Example</strong>: <code>monitor_system</code></p>
+
+<h4>PowerManagementAgent</h4>
+<p><strong>Purpose</strong>: Manages power settings and monitors battery status.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>check_battery</code>: Checks the battery status.</li>
+    <li><code>shutdown_system</code>: Shuts down the system.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>check_battery</code></li>
+    <li><code>shutdown_system</code></li>
+</ul>
+
+<h4>SystemInformationAgent</h4>
+<p><strong>Purpose</strong>: Retrieves detailed system information.</p>
+<p><strong>Command</strong>: <code>get_system_info</code></p>
+<p><strong>Example</strong>: <code>get_system_info</code></p>
+
+<h4>SecurityAgent</h4>
+<p><strong>Purpose</strong>: Handles security operations like scanning for vulnerabilities.</p>
+<p><strong>Command</strong>: <code>scan_vulnerabilities</code></p>
+<p><strong>Example</strong>: <code>scan_vulnerabilities</code></p>
+
+<h3 id="multimedia-agents">Multimedia Agents</h3>
+
+<h4>GraphicsAgent</h4>
+<p><strong>Purpose</strong>: Renders 3D objects and plots graphs.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>render_3d &lt;object_name&gt;</code>: Renders a 3D object.</li>
+    <li><code>plot_graph &lt;equation&gt;</code>: Plots a graph for the given equation.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>render_3d Cube</code></li>
+    <li><code>plot_graph 'x**2'</code></li>
+</ul>
+
+<h4>VideoAgent</h4>
+<p><strong>Purpose</strong>: Processes video files.</p>
+<p><strong>Command</strong>: <code>process_video &lt;video_path&gt;</code></p>
+<p><strong>Example</strong>: <code>process_video /path/to/video.mp4</code></p>
+
+<h4>ScreenCaptureAgent</h4>
+<p><strong>Purpose</strong>: Captures screenshots.</p>
+<p><strong>Command</strong>: <code>capture_screen &lt;file_path&gt;</code></p>
+<p><strong>Example</strong>: <code>capture_screen /path/to/screenshot.png</code></p>
+
+<h3 id="networking-agents">Networking Agents</h3>
+
+<h4>NetworkAgent</h4>
+<p><strong>Purpose</strong>: Performs network operations like pinging and checking connectivity.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>ping &lt;hostname&gt;</code>: Pings the specified hostname.</li>
+    <li><code>check_bandwidth</code>: Checks the network bandwidth.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>ping google.com</code></li>
+    <li><code>check_bandwidth</code></li>
+</ul>
+
+<h4>BrowserAutomationAgent</h4>
+<p><strong>Purpose</strong>: Automates browser tasks.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>navigate_to &lt;url&gt;</code>: Navigates to the specified URL.</li>
+    <li><code>find_element &lt;selector&gt;</code>: Finds an element on the web page by its CSS selector.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>navigate_to https://www.google.com</code></li>
+    <li><code>find_element '#search'</code></li>
+</ul>
+
+<h3 id="os-management-agents">OS Management Agents</h3>
+
+<h4>OperatingSystemAgent</h4>
+<p><strong>Purpose</strong>: Manages OS-level tasks like navigating directories.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>navigate_directory &lt;directory&gt;</code>: Navigates to the specified directory.</li>
+    <li><code>list_directory</code>: Lists the files in the current directory.</li>
+    <li><code>create_file &lt;file_name&gt;</code>: Creates a file with the specified name.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>navigate_directory /home/user</code></li>
+    <li><code>list_directory</code></li>
+    <li><code>create_file newfile.txt</code></li>
+</ul>
+
+<h4>UpdateAgent</h4>
+<p><strong>Purpose</strong>: Manages software updates and installations.</p>
+<p><strong>Command</strong>: <code>update_system</code></p>
+<p><strong>Example</strong>: <code>update_system</code></p>
+
+<h3 id="scheduler-agents">Scheduler Agents</h3>
+
+<h4>SchedulerAgent</h4>
+<p><strong>Purpose</strong>: Schedules tasks to be executed at specific times.</p>
+<p><strong>Command</strong>: <code>schedule_task &lt;time_str&gt; &lt;task&gt;</code></p>
+<p><strong>Example</strong>: <code>schedule_task 12:00 open_application calculator</code></p>
+
+<h4>AutomationAgent</h4>
+<p><strong>Purpose</strong>: Runs automation scripts.</p>
+<p><strong>Command</strong>: <code>run_script &lt;script_path&gt;</code></p>
+<p><strong>Example</strong>: <code>run_script /path/to/script.sh</code></p>
+
+<h3 id="ai-and-machine-learning-agents">AI and Machine Learning Agents</h3>
+
+<h4>AIModelTrainingAgent</h4>
+<p><strong>Purpose</strong>: Trains and evaluates machine learning models.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>train_model</code>: Trains a machine learning model.</li>
+    <li><code>save_model &lt;file_path&gt;</code>: Saves the trained model to the specified file.</li>
+    <li><code>load_model &lt;file_path&gt;</code>: Loads a model from the specified file.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>train_model</code></li>
+    <li><code>save_model /path/to/model.pth</code></li>
+    <li><code>load_model /path/to/model.pth</code></li>
+</ul>
+
+<h4>NaturalLanguageAgent</h4>
+<p><strong>Purpose</strong>: Processes text for sentiment analysis.</p>
+<p><strong>Command</strong>: <code>process_text &lt;text&gt;</code></p>
+<p><strong>Example</strong>: <code>process_text 'I love programming!'</code></p>
+
+<h4>TensorCoreAgent</h4>
+<p><strong>Purpose</strong>: Provides information about CUDA and tensors.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>cuda_info</code>: Provides information about CUDA availability.</li>
+    <li><code>tensor_info</code>: Provides information about tensors.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>cuda_info</code></li>
+    <li><code>tensor_info</code></li>
+</ul>
+
+<h3 id="database-agent">Database Agent</h3>
+
+<h4>DatabaseAgent</h4>
+<p><strong>Purpose</strong>: Interacts with databases (SQL and NoSQL).</p>
+<p><strong>Command</strong>: <code>execute_query &lt;db_path&gt; &lt;query&gt;</code></p>
+<p><strong>Example</strong>: <code>execute_query /path/to/database.db 'SELECT * FROM users'</code></p>
+
+<h3 id="utility-agents">Utility Agents</h3>
+
+<h4>InputAgent</h4>
+<p><strong>Purpose</strong>: Handles real-time user input.</p>
+<p><strong>Command</strong>: <code>*delegates to appropriate agent*</code></p>
+<p><strong>Example</strong>: <code>open_application calculator</code></p>
+
+<h4>PriorityAgent</h4>
+<p><strong>Purpose</strong>: Manages task prioritization.</p>
+<p><strong>Commands</strong>:</p>
+<ul>
+    <li><code>add_task &lt;priority&gt; &lt;task&gt;</code>: Adds a task with the specified priority.</li>
+    <li><code>process_tasks</code>: Processes the queued tasks based on their priority.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+    <li><code>add_task 1 open_application calculator</code></li>
+    <li><code>process_tasks</code></li>
+</ul>
+
+<h4>MathAgent</h4>
+<p><strong>Purpose</strong>: Performs mathematical calculations.</p>
+<p><strong>Command</strong>: <code>calculate &lt;expression&gt;</code></p>
+<p><strong>Example</strong>: <code>calculate '2 + 2 * 2'</code></p>
+
+<h4>SpeechSynthesisAgent</h4>
+<p><strong>Purpose</strong>: Converts text to speech.</p>
+<p><strong>Command</strong>: <code>speak &lt;text&gt;</code></p>
+<p><strong>Example</strong>: <code>speak 'Hello, World!'</code></p>
+
+<h2 id="contributing">Contributing</h2>
+<p>Contributions are welcome! Please fork the repository and submit a pull request with your improvements.</p>
+
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License.</p>
+
+<h2 id="support">Support</h2>
+<p>For support, please contact <a href="mailto:support@imobracingonline.com">support@imobracingonline.com</a>.</p>
+
+</body>
+</html>
