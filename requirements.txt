@@ -1,0 +1,7 @@
+torch
+transformers
+yfinance
+requests
+beautifulsoup4
+textblob
+pickle
