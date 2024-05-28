@@ -44,7 +44,7 @@ This project implements a hierarchical agent system designed for stock analysis 
 
 1. **Clone the Repository**
    ```sh
-   git clone https://github.com/your-username/hierarchical-agent-system.git
+   git clone https://github.com/sslinkyy/AI-PC-Operator.git
    cd hierarchical-agent-system
 Create a Virtual Environment and Activate it
 
